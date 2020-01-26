@@ -1,5 +1,5 @@
-const width = 25;
-const height = 20; // width and height dimensions of the board
+const width = 10;
+const height = 10; // width and height dimensions of the board
 
 /**
  * Create a Game of Life instance
@@ -41,6 +41,12 @@ document.getElementById("board").append(table);
  */
 
 const paint = () => {
+  gol.interator((rowIdx, colIdx) => {
+    const boardCell = gol.board[rowIdx][colIdx]
+    const tableCell = table.children[rowIdx].children[colIdx]
+
+    
+  })
   // TODO:
   //   1. For each <td> in the table:
   //     a. If its corresponding cell in gol instance is alive,
