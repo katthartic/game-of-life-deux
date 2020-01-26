@@ -10,14 +10,13 @@ class GameOfLife {
      */
   
     makeBoard() {
-        let board = []
-      for (let i = 0; i < this.height; i++) {
-          const row = []
-          for (let j = 0; j < this.width; i++) {
-              row.push(0)
-          }
-          board.push(row)
-      }
+      let boardWidth = new Array(this.width).fill(0)
+      let board = new Array(this.height).fill(boardWidth)
+      return board
+    }
+
+    neighbors() {
+      
     }
   
   
@@ -49,3 +48,4 @@ class GameOfLife {
     }
   }
   
+  const game = new GameOfLife(4,5)
