@@ -1,24 +1,40 @@
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable no-warning-comments */
+
 class GameOfLife {
     constructor(width, height) {
       this.width = width;
       this.height = height;
       this.board = this.makeBoard();
     }
-  
-    /**
-     * Returns a 2D Array
-     */
-  
+
     makeBoard() {
       let boardWidth = new Array(this.width).fill(0)
-      let board = new Array(this.height).fill(boardWidth)
-      return board
+      let finalBoard = new Array(this.height).fill(boardWidth)
+      return finalBoard
     }
 
-    neighbors() {
-      
+    interator(func) {
+      for (let rowIdx = 0; rowIdx < this.height; rowIdx++){
+        for (let colIdx = 0; colIdx < this.width; colIdx++){
+          func(rowIdx, colIdx)
+        }
+      }
     }
-  
+
+    randomizeBoard() {
+      this.interator((rowIdx, colIdx) => {
+        this.board[rowIdx][colIdx] = Math.random() * Math.floor(2)
+      })
+    }
+
+    clearBoard() {
+      this.interator((rowIdx, colIdx) => {
+        this.board[rowIdx][colIdx] = 0
+      })
+    }
+
+
   
     /**
      * Return the amount of living neighbors around a given coordinate.
@@ -26,6 +42,7 @@ class GameOfLife {
   
     livingNeighbors(row, col) {
       // TODO: Return the count of living neighbors.
+    
     }
   
   
@@ -47,5 +64,3 @@ class GameOfLife {
       this.board = newBoard;
     }
   }
-  
-  const game = new GameOfLife(4,5)
