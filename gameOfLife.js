@@ -11,6 +11,7 @@ class GameOfLife {
     makeBoard() {
       let boardWidth = new Array(this.width).fill(0)
       let finalBoard = new Array(this.height).fill(boardWidth)
+      console.log(finalBoard)
       return finalBoard
     }
 
@@ -24,16 +25,19 @@ class GameOfLife {
 
     randomizeBoard() {
       this.interator((rowIdx, colIdx) => {
-        this.board[rowIdx][colIdx] = Math.random() * Math.floor(2)
+        this.board[rowIdx][colIdx] = Math.round(Math.random())
+        // console.log('rowIdx', rowIdx, 'colIdx', colIdx)
+        // console.log('value', this.board[rowIdx][colIdx])
       })
+      // console.log('randomized', this.board)
     }
 
     clearBoard() {
       this.interator((rowIdx, colIdx) => {
-        this.board[rowIdx][colIdx] = 0
+        this.board[rowIdx][colIdx] = 0  
       })
+      // console.log('cleared', this.board)
     }
-
 
   
     /**

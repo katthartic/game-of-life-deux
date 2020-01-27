@@ -1,3 +1,4 @@
+/* eslint-disable no-warning-comments */
 const width = 10;
 const height = 10; // width and height dimensions of the board
 
@@ -44,8 +45,14 @@ const paint = () => {
   gol.interator((rowIdx, colIdx) => {
     const boardCell = gol.board[rowIdx][colIdx]
     const tableCell = table.children[rowIdx].children[colIdx]
+    console.log(tableCell)
 
-    
+    if (boardCell) {
+      tableCell.classList.add('alive')
+    } else {
+      tableCell.classList.remove('alive')
+    }
+
   })
   // TODO:
   //   1. For each <td> in the table:
@@ -68,6 +75,13 @@ const paint = () => {
 
 document.getElementById("board").addEventListener("click", event => {
   // TODO: Toggle clicked cell (event.target) and paint
+  const cell = event.target;
+  const row = cell.parentNode;
+  const table = row.parentNode;
+  const cellIndex = [...row.children].indexOf(cell);
+  const rowIndex = [...table.children].indexOf(row);
+  gol.board[rowIndex][cellIndex] = !gol.board[rowIndex][cellIndex];
+  paint();
 });
 
 document.getElementById("step_btn").addEventListener("click", event => {
@@ -83,8 +97,12 @@ document.getElementById("play_btn").addEventListener("click", event => {
 
 document.getElementById("random_btn").addEventListener("click", event => {
   // TODO: Randomize the board and paint
+  gol.randomizeBoard()
+  paint()
 });
 
 document.getElementById("clear_btn").addEventListener("click", event => {
   // TODO: Clear the board and paint
+  gol.clearBoard()
+  paint()
 });
