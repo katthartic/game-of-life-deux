@@ -15,7 +15,7 @@ class GameOfLife {
       return finalBoard
     }
 
-    interator(func) {
+    iterator(func) {
       for (let rowIdx = 0; rowIdx < this.height; rowIdx++){
         for (let colIdx = 0; colIdx < this.width; colIdx++){
           func(rowIdx, colIdx)
@@ -24,7 +24,7 @@ class GameOfLife {
     }
 
     randomizeBoard() {
-      this.interator((rowIdx, colIdx) => {
+      this.iterator((rowIdx, colIdx) => {
         this.board[rowIdx][colIdx] = Math.round(Math.random())
         // console.log('rowIdx', rowIdx, 'colIdx', colIdx)
         // console.log('value', this.board[rowIdx][colIdx])
@@ -33,7 +33,7 @@ class GameOfLife {
     }
 
     clearBoard() {
-      this.interator((rowIdx, colIdx) => {
+      this.iterator((rowIdx, colIdx) => {
         this.board[rowIdx][colIdx] = 0  
       })
       // console.log('cleared', this.board)

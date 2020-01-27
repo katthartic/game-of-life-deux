@@ -42,18 +42,18 @@ document.getElementById("board").append(table);
  */
 
 const paint = () => {
-  gol.interator((rowIdx, colIdx) => {
+  gol.iterator((rowIdx, colIdx) => {
     const boardCell = gol.board[rowIdx][colIdx]
     const tableCell = table.children[rowIdx].children[colIdx]
-    console.log(tableCell)
+    //console.log(tableCell)
 
     if (boardCell) {
       tableCell.classList.add('alive')
     } else {
       tableCell.classList.remove('alive')
     }
-
   })
+
   // TODO:
   //   1. For each <td> in the table:
   //     a. If its corresponding cell in gol instance is alive,
